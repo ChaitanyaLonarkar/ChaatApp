@@ -3,9 +3,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import authRouter from "./routes/authRoutes.js";
+import connectDb from "./DB/connection.js";
 const app = express();
 
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 dotenv.config();
 
 app.use("/auth/", authRouter);
@@ -17,4 +18,7 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {
   res.send("sign up route");
 });
-app.listen(port, () => console.log(`working on ${port}`));
+app.listen(port, () => {
+    connectDb()
+  console.log(`working on ${port}`);
+});
