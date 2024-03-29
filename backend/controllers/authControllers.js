@@ -16,7 +16,7 @@ export const signUp = async (req, res) => {
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    
+
     const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
     const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
@@ -85,5 +85,12 @@ export const loginUser = async (req, res) => {
   //   res.send("ye to signUp hai");
 };
 export const logOut = async (req, res) => {
-  res.send("ye to logOut hai");
+    try {
+		res.cookie("jwt", "", { maxAge: 0 });
+		res.status(200).json({ message: "Logged out successfully" });
+	} catch (error) {
+		console.log("Error in logout controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+//   res.send("ye to logOut hai");
 };
