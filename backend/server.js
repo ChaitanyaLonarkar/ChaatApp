@@ -4,21 +4,20 @@ import express from "express";
 import dotenv from "dotenv";
 import authRouter from "./routes/authRoutes.js";
 import connectDb from "./DB/connection.js";
-const app = express();
 
+const app = express();
 const port = process.env.PORT || 5000;
+
 dotenv.config();
+app.use(express.json());
 
 app.use("/auth/", authRouter);
 
 app.get("/", (req, res) => {
-  res.send("server uin running on port 5000");
+  res.send(`server uin running on port 5000`);
 });
 
-app.get("/signup", (req, res) => {
-  res.send("sign up route");
-});
 app.listen(port, () => {
-    connectDb()
+  connectDb();
   console.log(`working on ${port}`);
 });
