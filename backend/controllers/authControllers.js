@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/token.js";
-
+// import User from "../models/userModel.js";
 export const signUp = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword, gender } = req.body;
@@ -28,13 +28,6 @@ export const signUp = async (req, res) => {
       profilePic: gender === "male" ? girlProfilePic : boyProfilePic,
     });
 
-    // const newUser = new User({
-    //   fullName,
-    //   username,
-    //   password,
-    //   gender,
-    //   profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
-    // });
     if (newUser) {
       generateTokenAndSetCookie(newUser._id, res);
       await newUser.save();
@@ -52,7 +45,6 @@ export const signUp = async (req, res) => {
     console.log("Error in signup controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
-  //   res.send("loding user");
 };
 
 export const loginUser = async (req, res) => {
@@ -76,8 +68,6 @@ export const loginUser = async (req, res) => {
       username: user.username,
       profilePic: user.profilePic,
     });
-
-
   } catch (error) {
     console.log("Error in login controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
@@ -85,14 +75,27 @@ export const loginUser = async (req, res) => {
   //   res.send("ye to signUp hai");
 };
 
-
 export const logOut = async (req, res) => {
-    try {
-		res.cookie("jwt", "", { maxAge: 0 });
-		res.status(200).json({ message: "Logged out successfully" });
-	} catch (error) {
-		console.log("Error in logout controller", error.message);
-		res.status(500).json({ error: "Internal Server Error" });
-	}
-//   res.send("ye to logOut hai");
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.log("Error in logout controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+  //   res.send("ye to logOut hai");
+};
+
+export const getUsersForSidebar = async (req, res) => {
+  try {
+    const  loggedInUserId  = req.user._id;
+    console.log(loggedInUserId);
+    const  filterdUsers  = await User.find({_id:{$ne:loggedInUserId}}).select("-password");
+    console.log(filterdUsers);
+
+    res.status(200).json(filterdUsers);
+  } catch (error) {
+    console.log("getUsersForSidebar me error hai", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
