@@ -1,6 +1,6 @@
 import express from "express";
-const router = express.Router();
 import { logOut, loginUser, signUp } from "../controllers/authControllers.js";
+const router = express.Router();
 
 router.post("/login", loginUser);
 router.post("/signup", signUp);

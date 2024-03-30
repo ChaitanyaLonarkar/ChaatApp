@@ -84,6 +84,8 @@ export const loginUser = async (req, res) => {
   }
   //   res.send("ye to signUp hai");
 };
+
+
 export const logOut = async (req, res) => {
     try {
 		res.cookie("jwt", "", { maxAge: 0 });
