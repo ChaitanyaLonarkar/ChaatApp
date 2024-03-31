@@ -3,7 +3,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import { useState } from "react";
 import { IoLogoWechat } from "react-icons/io5";
 export default function ChaatContainer() {
-  const noChat = true;
+  const noChat = false;
   return (
     <>
       {noChat ? (

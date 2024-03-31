@@ -11,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -37,6 +38,7 @@ function App() {
               <Route path="/signup" element={<SignupPage />} />
             </Routes>
           </BrowserRouter>
+          <Toaster/>
       </div>
     </>
   );

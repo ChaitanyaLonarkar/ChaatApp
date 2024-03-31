@@ -15,8 +15,8 @@ export default function Login() {
           "
         >
           <div className="from-filelds flex  flex-col">
-            <input type="text" placeholder="Enter Username" className="p-3 border rounded-md  w-96 m-3 " />
-            <input type="password" placeholder="Password" className=" border-gray-500p-3 border  p-3 rounded-md  m-3 w-96  tex" />
+            <input type="text" placeholder="Enter Username" className="p-3 border rounded-md  w-96 m-3 "  required/>
+            <input type="password" placeholder="Password" className=" border-gray-500p-3 border  p-3 rounded-md  m-3 w-96  tex" required />
             <button type="submit" className="p-3 text-white bg-gray-900 rounded-md  m-3 ">Login</button>
           </div>
         </form>
