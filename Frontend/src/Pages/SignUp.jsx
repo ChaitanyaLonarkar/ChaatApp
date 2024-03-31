@@ -49,6 +49,13 @@ border-gray-500  m-3 w-96  "
               className="p-3 rounded-md border
 border-gray-500 m-3 w-96  "
             />
+            <div className="gender flex gap-3 my-3">
+              <b>Gender:</b>
+              <input type="radio" name="gender" id="gender" value={"male"} />
+              Male
+              <input type="radio" name="gender" id="gender" value={"male"} />
+              Female
+            </div>
             <button
               type="submit"
               className="p-3 text-white bg-gray-900 rounded-md w-96 m-3 "
