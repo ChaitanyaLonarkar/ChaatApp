@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useSignup from "../hooks/useSignup";
 export default function SignUp() {
   const [inputs, setinputs] = useState({
     fullName: "",
@@ -11,17 +12,17 @@ export default function SignUp() {
     gender: "",
   });
 
-const onValueChange=(event)=>{
+  const onValueChange = (event) => {
     // Updating the state with the selected radio button's value
-    inputs.gender(event.target.value)
-}
+    inputs.gender(event.target.value);
+  };
 
-  const handleSubmit = (e) => {
+  const{loading,signUp}=useSignup();
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
-    if(inputs.password !=inputs.confirmPassword){
-        toast.error("password not match")
-    }
+    await signUp(inputs);
   };
 
   return (
@@ -51,7 +52,8 @@ border-gray-500 w-96 m-3 "
               onChange={(e) => {
                 setinputs({ ...inputs, username: e.target.value });
               }}
-            required />
+               
+            />
             <input
               type="text"
               placeholder="Enter full name"
@@ -61,7 +63,8 @@ border-gray-500 w-96 m-3 "
               onChange={(e) => {
                 setinputs({ ...inputs, fullName: e.target.value });
               }}
-            required />
+               
+            />
             <input
               type="email"
               placeholder="Enter email "
@@ -71,7 +74,8 @@ border-gray-500 w-96 m-3 "
               onChange={(e) => {
                 setinputs({ ...inputs, email: e.target.value });
               }}
-            required />
+               
+            />
             <input
               type="password"
               placeholder="Password"
@@ -81,7 +85,8 @@ border-gray-500  m-3 w-96  "
               onChange={(e) => {
                 setinputs({ ...inputs, password: e.target.value });
               }}
-            required />
+               
+            />
             <input
               type="password"
               placeholder="Confirm Password"
@@ -91,22 +96,41 @@ border-gray-500 m-3 w-96  "
               onChange={(e) => {
                 setinputs({ ...inputs, confirmPassword: e.target.value });
               }}
-            required />
+               
+            />
             <div className="gender flex gap-3 my-3">
               <b>Gender:</b>
-              <label htmlFor="" value={inputs.gender}
-              onChange={(e) => {
-                setinputs({ ...inputs, gender: e.target.value });
-              }}>
-                <input type="radio" name="gender" id="male" value={"male"} required/>
-              Male
+              <label
+                htmlFor=""
+                value={inputs.gender}
+                onChange={(e) => {
+                  setinputs({ ...inputs, gender: e.target.value });
+                }}
+              >
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value={"male"}
+                   
+                />
+                Male
               </label>
-              <label htmlFor="" value={inputs.gender}
-              onChange={(e) => {
-                setinputs({ ...inputs, gender: e.target.value });
-              }}>
-                <input type="radio" name="gender" id="female" value={"female"} required />
-              Female
+              <label
+                htmlFor=""
+                value={inputs.gender}
+                onChange={(e) => {
+                  setinputs({ ...inputs, gender: e.target.value });
+                }}
+              >
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value={"female"}
+                   
+                />
+                Female
               </label>
             </div>
             <button
