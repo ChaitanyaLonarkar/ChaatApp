@@ -8,7 +8,7 @@ export default function useSignup() {
 
 
   const [loading, setloading] = useState(false);
-  const setauthUser= useAuthContext();
+  const setAuthUser = useAuthContext();
 
   const signUp = async ({
     fullName,
@@ -44,17 +44,18 @@ export default function useSignup() {
       });
 
       const data = await res.json();
+      console.log(data,"isko signup js se liya h")
       if (data.error) {
         throw new Error(data.error);
       }
 
       //localstrorage
       localStorage.setItem("chat-user", JSON.stringify(data));
-      setauthUser(data);
+      setAuthUser(data);
       //   console.log(data)
 
     } catch (error) {
-      toast.error(error.message);
+      toast.success(error.message);
 
     } finally {
       setloading(false);

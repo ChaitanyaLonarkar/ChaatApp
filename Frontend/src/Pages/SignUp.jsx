@@ -19,7 +19,7 @@ export default function SignUp() {
   //   inputs.gender(event.target.value);
   // };
 
-  const{loading,signUp}=useSignup();
+  const {loading,signUp}=useSignup();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
