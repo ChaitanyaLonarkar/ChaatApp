@@ -1,8 +1,14 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useAuthContext } from "../context/AuthContext";
+
+
 export default function useSignup() {
+
+
   const [loading, setloading] = useState(false);
+  const setauthUser= useAuthContext();
 
   const signUp = async ({
     fullName,
@@ -34,18 +40,25 @@ export default function useSignup() {
         }),
       });
 
-      const data =await res.json();
-      console.log(data)
+      const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      //localstrorage
+      localStorage.setItem("chat-user", JSON.stringify(data));
+      setauthUser(data);
+      //   console.log(data)
+
     } catch (error) {
-      toast.error(error.message );
+      toast.error(error.message);
+
     } finally {
       setloading(false);
     }
-
-
   };
 
-  return {loading,signUp}
+  return { loading, signUp };
 }
 
 function handleInputErrors({

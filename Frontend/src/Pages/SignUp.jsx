@@ -12,10 +12,10 @@ export default function SignUp() {
     gender: "",
   });
 
-  const onValueChange = (event) => {
-    // Updating the state with the selected radio button's value
-    inputs.gender(event.target.value);
-  };
+  // const onValueChange = (event) => {
+  //   // Updating the state with the selected radio button's value
+  //   inputs.gender(event.target.value);
+  // };
 
   const{loading,signUp}=useSignup();
   
@@ -135,9 +135,9 @@ border-gray-500 m-3 w-96  "
             </div>
             <button
               type="submit"
-              className="p-3 text-white bg-gray-900 rounded-md w-96 m-3 "
+              className="p-3 text-white bg-gray-900 rounded-md w-96 m-3 " disabled={loading}
             >
-              Create
+              {loading?(<svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">Processing...</svg>):"Create Account"}
             </button>
           </div>
         </form>
