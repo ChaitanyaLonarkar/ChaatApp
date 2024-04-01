@@ -26,7 +26,10 @@ export default function useSignup() {
     });
 
     if (!success) return;
+
     setloading(true);
+
+    
     try {
       const res = await fetch("/auth/signup", {
         method: "POST",

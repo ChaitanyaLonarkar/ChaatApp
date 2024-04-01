@@ -13,17 +13,20 @@ import { useAuthContext } from "./context/AuthContext";
 function App() {
   // const [count, setCount] = useState(0)
   const  authUser  = useAuthContext();
+  console.log("that is the auth  user value",authUser)
   return (
+
     <>
+    
       <div className="containerr flex h-screen flex-col w-screen items-center justify-center bg-purple-200">
        
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={authUser ? <HomePage />: <Navigate to="/login" />} />
-            <Route path="/login" element={authUser ? <Navigate to="/" />:<LoginPage />} />
+            <Route path="/" element={authUser ?<Navigate to="/login" />: <HomePage /> } />
+            <Route path="/login" element={authUser ? <LoginPage />:<Navigate to="/" />} />
             <Route
               path="/signup"
-              element={authUser ? <Navigate to="/" />: <SignupPage /> }
+              element={authUser ?  <SignupPage />:<Navigate to="/" /> }
             />
           </Routes>
         </BrowserRouter>

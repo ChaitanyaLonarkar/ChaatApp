@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useSignup from "../hooks/useSignup";
+
+
 export default function SignUp() {
   const [inputs, setinputs] = useState({
     fullName: "",
