@@ -1,4 +1,3 @@
-import React from "react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
@@ -8,7 +7,7 @@ export default function useSignup() {
 
 
   const [loading, setloading] = useState(false);
-  const setAuthUser = useAuthContext();
+  const {authuser ,setAuthUser} = useAuthContext();
 
   const signUp = async ({
     fullName,
@@ -28,8 +27,6 @@ export default function useSignup() {
     if (!success) return;
 
     setloading(true);
-
-    
     try {
       const res = await fetch("/auth/signup", {
         method: "POST",
@@ -45,14 +42,14 @@ export default function useSignup() {
 
       const data = await res.json();
       console.log(data,"isko signup js se liya h")
+      
       if (data.error) {
         throw new Error(data.error);
       }
-
       //localstrorage
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
-      //   console.log(data)
+      console.log(authuser)
 
     } catch (error) {
       toast.success(error.message);
