@@ -8,7 +8,7 @@ export default function useLogout() {
 
 
   const [loading, setloading] = useState(false);
-  const  setauthUser= useAuthContext();
+  const {authUser ,setAuthUser}= useAuthContext();
 
   const logout = async () => {
 
@@ -26,7 +26,7 @@ export default function useLogout() {
 
       //localstrorage
       localStorage.removeItem("chat-user");
-      setauthUser(null);
+      setAuthUser(null);
       //   console.log(data)
 
     } catch (error) {

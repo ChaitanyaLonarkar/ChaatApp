@@ -7,7 +7,7 @@ export default function useSignup() {
 
 
   const [loading, setloading] = useState(false);
-  const {authuser ,setAuthUser} = useAuthContext();
+  const {authUser ,setAuthUser} = useAuthContext();
 
   const signUp = async ({
     fullName,
@@ -49,7 +49,7 @@ export default function useSignup() {
       //localstrorage
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
-      console.log(authuser)
+      console.log('ye hhhhhhhhhhhhhhhhhhhhhh',authUser)
 
     } catch (error) {
       toast.success(error.message);
