@@ -14,11 +14,6 @@ export default function SignUp() {
     gender: "",
   });
 
-  // const onValueChange = (event) => {
-  //   // Updating the state with the selected radio button's value
-  //   inputs.gender(event.target.value);
-  // };
-
   const {loading,signUp}=useSignup();
   
   const handleSubmit = async (e) => {
@@ -29,7 +24,7 @@ export default function SignUp() {
 
   return (
     <>
-      <div className="login flex flex-col gap-5 justify-center rounded-md bg-white p-10">
+      <div className="login flex flex-col gap-5 justify-center rounded-md bg-white  bg-teal-700 p-10">
         <div className="head flex flex-col gap-3 justify-center items-center">
           <h1 className="text-3xl font-semibold">Create new account</h1>
           <p>

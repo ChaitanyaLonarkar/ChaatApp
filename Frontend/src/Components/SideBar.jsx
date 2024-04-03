@@ -2,11 +2,15 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import useLogout from "../hooks/useLogout";
+import useGetconversations from "../hooks/useGetconversations";
+
 export default function SideBar() {
   const { loading, logout } = useLogout();
+  const { conversations } = useGetconversations();
+  console.log(conversations,"................");
   return (
     <>
-      <div className="SideBar  w-84 bg-blue-200 p-5 flex flex-col gap-10 justify-between ">
+      <div className="SideBar  w-84 bg-blue-200  bg-teal-700 p-5 flex flex-col gap-10 justify-between ">
         <div className="search bg-white rounded ">
           <input
             type="search"

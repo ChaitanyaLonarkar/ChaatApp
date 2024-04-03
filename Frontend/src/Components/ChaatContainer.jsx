@@ -7,7 +7,7 @@ export default function ChaatContainer() {
   return (
     <>
       {noChat ? (
-        <div className=" container chat w-96 bg-blue-200">
+        <div className=" container chat w-96 bg-green-700 bg-teal-700">
           <div className="header flex gap-4 m-4">
             <img src="" alt="jkhdjf" name="userProfile" />
             <p name="username"> username</p>
@@ -39,7 +39,7 @@ export default function ChaatContainer() {
           </form>
         </div>
       ) : (
-        <div className="nochat  container chat w-96 bg-blue-200 flex justify-center items-center">
+        <div className="nochat  container chat w-96  bg-teal-700 flex justify-center items-center">
           <p className="tex text-xl w-60 text-center">
             Hello Chaitanya <br />Select friend to chat with
             <IoLogoWechat className=" text-5xl text-center m-auto" />

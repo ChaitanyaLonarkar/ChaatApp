@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="login flex flex-col gap-10 justify-center h  bg-white rounded-md  p-10">
+      <div className="login flex flex-col gap-10 justify-center h  bg-white  bg-teal-700 rounded-md  p-10">
         <div className="head flex flex-col gap-5 justify-center items-center">
           <h1 className="text-3xl font-semibold">Login to your account</h1>
           <p>

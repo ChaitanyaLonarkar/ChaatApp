@@ -16,7 +16,9 @@ function App() {
   console.log("that is the auth  user value", authUser);
   return (
     <>
-      <div className="containerr flex h-screen flex-col w-screen items-center justify-center bg-purple-200">
+      {/* <div className="containerr flex h-screen flex-col w-screen items-center justify-center bg-purple-200"> */}
+      <div className="containerr flex h-screen flex-col w-screen items-center justify-center   bg-slate-900">
+
         <BrowserRouter>
           <Routes>
             <Route
