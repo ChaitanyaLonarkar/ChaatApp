@@ -10,9 +10,15 @@ export default function useGetconversations() {
     const getConversations = async () => {
       setloading(true);
       try {
-        const res = await fetch("/users/", 
-        { method: "GET",
-        headers: { "Content-Type": "application/json" }});
+        // const res = await fetch("/users");
+        const res = await fetch("/api/users/");
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new Error("Response is not JSON");
+        }
         const data = await res.json();
         
         // console.log(data,"ye getconversation js se h")

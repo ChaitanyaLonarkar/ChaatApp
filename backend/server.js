@@ -3,6 +3,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+
 
 import authRouter from "./routes/authRoutes.js";
 import messageRouter from "./routes/messagRoute.js";
@@ -17,10 +19,11 @@ const port = process.env.PORT || 5000;
 dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.json())
 
 app.use("/auth/", authRouter);
-app.use("/message/", messageRouter);
-app.use("/users/", usersRouter);
+app.use("/api/message/", messageRouter);
+app.use("/api/users/", usersRouter);
 
 
 app.get("/", (req, res) => {
