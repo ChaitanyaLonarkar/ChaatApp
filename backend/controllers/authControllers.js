@@ -91,9 +91,9 @@ export const logOut = async (req, res) => {
 export const getUsersForSidebar = async (req, res) => {
   try {
     const  loggedInUserId  = req.user._id;
-    console.log(loggedInUserId);
+    console.log(loggedInUserId,"ye logged in hai");
     const  filterdUsers  = await User.find({_id:{$ne:loggedInUserId}}).select("-password");
-    console.log(filterdUsers);
+    console.log(filterdUsers,"isme currrent login nahi hai");
 
     res.status(200).json(filterdUsers);
   } catch (error) {
