@@ -10,21 +10,23 @@ export default function useGetconversations() {
       setloading(true);
       try {
         // const res = await fetch("https://random-data-api.com/api/v2/users");
-        // random api use kar rha hu to code theeek se chal rha hai
-        const res = await fetch("/api/users", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-        const data = await res.json();
-        console.log("tryme")
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        const contentType = res.headers.get("content-type");
+        const res = await fetch("/api/users");
 
-        if (!contentType || !contentType.includes("application/json")) {
-          throw new Error("Response is not JSON");
-        }
+        // random api use kar rha hu to code theeek se chal rha hai
+        // const res = await fetch("/api/users/", {
+        //   method: "GET",
+        //   headers: { "Content-Type": "application/json" },
+        // });
+        const data = await res.json();
+        // console.log("tryme")
+        // if (!res.ok) {
+        //   throw new Error(`HTTP error! Status: ${res.status}`);
+        // }
+        // const contentType = res.headers.get("content-type");
+
+        // if (!contentType || !contentType.includes("application/json")) {
+        //   throw new Error("Response is not JSON");
+        // }
         // const data = await res.json();
 
         console.log(data,"ye getconversation js se h")
