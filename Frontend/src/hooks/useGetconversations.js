@@ -10,7 +10,7 @@ export default function useGetconversations() {
       setloading(true);
       try {
         // const res = await fetch("https://random-data-api.com/api/v2/users");
-        const res = await fetch("/api/users");
+        const res = await fetch("/api/users/");
 
         // random api use kar rha hu to code theeek se chal rha hai
         // const res = await fetch("/api/users/", {
@@ -30,6 +30,7 @@ export default function useGetconversations() {
         // const data = await res.json();
 
         console.log(data,"ye getconversation js se h")
+        
         if (data.error) {
           throw new Error(data.error);
         }

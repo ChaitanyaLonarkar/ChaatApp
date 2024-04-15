@@ -94,7 +94,6 @@ export const getUsersForSidebar = async (req, res) => {
     console.log(loggedInUserId,"ye logged in hai");
     const  filterdUsers  = await User.find({_id:{$ne:loggedInUserId}}).select("-password");
     console.log(filterdUsers,"isme currrent login nahi hai");
-
     res.status(200).json(filterdUsers);
   } catch (error) {
     console.log("getUsersForSidebar me error hai", error.message);
