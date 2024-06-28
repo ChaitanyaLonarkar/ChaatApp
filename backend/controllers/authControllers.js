@@ -27,7 +27,7 @@ export const signUp = async (req, res) => {
       username: username,
       password: hashedPassword,
       gender: gender,
-      profilePic: gender === "male" ? girlProfilePic : boyProfilePic,
+      profilePic: gender === "male" ? boyProfilePic :girlProfilePic,
     });
 
     if (newUser) {
@@ -90,9 +90,9 @@ export const logOut = async (req, res) => {
 
 export const getUsersForSidebar = async (req, res) => {
   try {
-    const  loggedInUserId  = req.user._id;
-    console.log(loggedInUserId,"ye logged in hai");
-    const  filterdUsers  = await User.find({_id:{$ne:loggedInUserId}}).select("-password");
+    const  {_id} = req.body;
+    console.log(_id,"ye logged in hai");
+    const  filterdUsers  = await User.find({_id:{$ne:_id}}).select("-password");
     console.log(filterdUsers,"isme currrent login nahi hai");
     res.status(200).json(filterdUsers);
   } catch (error) {

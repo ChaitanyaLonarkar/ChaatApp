@@ -5,5 +5,5 @@ import  {getUsersForSidebar} from "../controllers/authControllers.js";
 const router=express.Router();
 
 
-router.get("/",protectRoute,getUsersForSidebar)
+router.post("/",getUsersForSidebar)
 export default router;

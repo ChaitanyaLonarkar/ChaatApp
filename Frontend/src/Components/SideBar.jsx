@@ -7,7 +7,7 @@ import useGetconversations from "../hooks/useGetconversations";
 export default function SideBar() {
   const { loading, logout } = useLogout();
   const { conversations } = useGetconversations();
-  console.log(conversations,"................");
+  console.log(conversations, "................");
   return (
     <>
       <div className="SideBar  w-84 bg-blue-200  bg-teal-700 p-5 flex flex-col gap-10 justify-between ">
@@ -23,25 +23,23 @@ export default function SideBar() {
             <FaSearch />
           </button>
         </div>
-        <div className="allusers">
-          <div className="user flex gap-3">
-            <img src="" alt="" name="userProfile" width={50} height={50} />
-            <div className="u-details">
-              <p>User name</p>
+        <div className="allusers overflow-x-hidden ">
+          {conversations.map((user) => (
+            <div className="user flex items-center mb-3 gap-3 border rounded p-2">
+              <img
+                src={user.profilePic}
+                alt="profile"
+                name="userProfile"
+                width={45}
+                height={45}
+              />
+              <div className="u-details font-semibold text-lg">
+                <p>{user.username}</p>
+                <p className="text-sm">{user.fullName}</p>
+              </div>
             </div>
-          </div>
-          <div className="user flex gap-3">
-            <img src="" alt="" name="userProfile" width={50} height={50} />
-            <div className="u-details">
-              <p>User name</p>
-            </div>
-          </div>
-          <div className="user flex gap-3">
-            <img src="" alt="" name="userProfile" width={50} height={50} />
-            <div className="u-details">
-              <p>User name</p>
-            </div>
-          </div>
+          ))}
+         
         </div>
 
         <div className="logout">

@@ -1,23 +1,46 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { useAuthContext } from "../context/AuthContext";
 
 export default function useGetconversations() {
   const [loading, setloading] = useState(false);
   const [conversations, setconversations] = useState([]);
+  const { authUser, setAuthUser } = useAuthContext();
 
+  const getusers = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/users",
+        {
+          withCredentials: true,
+        },
+        { authUser }
+      );
+
+      console.log(res.data);
+      setconversations(res.data)
+    } catch (error) {
+      console.log(error);
+      // toast.error(error.message);
+    }
+  };
   useEffect(() => {
     const getConversations = async () => {
       setloading(true);
       try {
         // const res = await fetch("https://random-data-api.com/api/v2/users");
-        const res = await fetch("/api/users/");
+        // const res = await fetch("/api/users");
+        const res = await axios.get("http://localhost:5000/api/users", {
+          withCredentials: true,
+        });
 
         // random api use kar rha hu to code theeek se chal rha hai
         // const res = await fetch("/api/users/", {
         //   method: "GET",
         //   headers: { "Content-Type": "application/json" },
         // });
-        const data = await res.json();
+        // const data = await res.json();
         // console.log("tryme")
         // if (!res.ok) {
         //   throw new Error(`HTTP error! Status: ${res.status}`);
@@ -29,13 +52,14 @@ export default function useGetconversations() {
         // }
         // const data = await res.json();
 
-        console.log(data,"ye getconversation js se h")
-        
-        if (data.error) {
-          throw new Error(data.error);
-        }
-        setconversations(data);
+        console.log(res.data, "ye getconversation js se h");
+
+        // if (res.error) {
+        //   throw new Error(res.error);
+        // }
+        setconversations(res);
       } catch (error) {
+        console.log(error);
         toast.error(error.message);
       } finally {
         setloading(false);
@@ -80,7 +104,8 @@ export default function useGetconversations() {
       //   }
     };
 
-    getConversations();
+    // getConversations();
+    getusers();
   }, []);
 
   // console.log(conversations, "ye getconversation js se h");
