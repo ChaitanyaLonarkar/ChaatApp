@@ -65,7 +65,7 @@ input{
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1, #2681cc));} */
 
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
     height: 30px;
 }
 
@@ -75,5 +75,5 @@ input{
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #060b9a;
+    background-color: #878b8b;
 }
