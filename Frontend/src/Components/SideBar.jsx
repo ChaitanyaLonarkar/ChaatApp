@@ -23,7 +23,7 @@ export default function SideBar() {
             <FaSearch />
           </button>
         </div>
-        <div className="allusers overflow-x-hidden ">
+        <div className="allusers overflow-auto h-[24rem] ">
           {conversations.map((user) => (
             <div className="user flex items-center mb-3 gap-3 border rounded p-2">
               <img
