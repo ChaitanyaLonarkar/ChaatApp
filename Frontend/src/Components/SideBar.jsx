@@ -10,7 +10,7 @@ export default function SideBar() {
   console.log(conversations, "................");
   return (
     <>
-      <div className="SideBar  w-84 bg-blue-200  bg-teal-700 p-5 flex flex-col gap-10 justify-between ">
+      <div className="SideBar  w-84 bg-blue-200  bg-teal-700 p-5 flex flex-col gap-10 justify-between cursor-pointer">
         <div className="search bg-white rounded ">
           <input
             type="search"

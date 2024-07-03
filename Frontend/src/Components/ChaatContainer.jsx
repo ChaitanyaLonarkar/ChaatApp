@@ -6,14 +6,14 @@ export default function ChaatContainer() {
   const noChat = false;
   return (
     <>
-      {noChat ? (
-        <div className=" container chat w-96 bg-green-700 bg-teal-700">
+      {!noChat ? (
+        <div className=" container chat w-96 bg-green-700 bg-teal-700 ">
           <div className="header flex gap-4 m-4">
             <img src="" alt="jkhdjf" name="userProfile" />
             <p name="username"> username</p>
           </div>
 
-          <div className="chatbox  h-96 p-3 text-white bg-gray-600 overflow-auto">
+          <div className="chatbox  h-[29.5rem] p-3 text-white bg-gray-600 overflow-auto">
             {/* <div className="chat chat-end ">fdgdfg</div> */}
             <div class="box sb1">I'm speech bubble</div>
             <div class="box sb2">I'm speech bubble</div>
